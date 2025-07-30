@@ -1,0 +1,150 @@
+<!-- Copyright (c) 2025 Franz Steinkress
+     Licensed under the MIT License - see LICENSE for details -->
+
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <title>InteraktiveUIVorschau</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="overlay-box">
+        <div class="nav-arrows">
+            <button id="leftBtn" class="arrow left">←</button>
+            <button id="rightBtn" class="arrow right">→</button>
+            <button id="upBtn" class="arrow up">↑</button>
+            <button id="downBtn" class="arrow down">↓</button>
+        </div>
+        <div class="text">
+            <div class="line1" id="title">Python-Beispielsammlung</div>
+            <div class="line2" id="description">Beschreibung</div>
+        </div>
+        <img src="./assets/bild1.png" alt="Screenshot des Chatbot-Projekts" class="mb-4 w-full max-h-48 object-contain rounded" data-i18n-alt="index.chatbot_alt">
+        <button id="closeBtn">Bild 1 von 12</button>
+    </div>
+    <script>
+        const themes = ["white", "gray", "red", "blue", "royal", "green"];
+        const images = ["bild1.png", "bild2.png", "bild3.png", "bild4.png", "bild5.png", "bild6.png", "bild7.png", "bild8.png", "bild9.png", "bild10.png", "bild11.png", "bild12.png"];
+        let themeIndex = 0; // entspricht .theme-gray
+        let imageIndex = 0; // entspricht bild1.png
+        const titles = [
+            "Python-Beispielsammlung",
+            "Python-Beispielsammlung",
+            "Python-Beispielsammlung",
+            "Python-Beispielsammlung",
+            "Python-Beispielsammlung",
+            "Python-Beispielsammlung",
+            "Python-Beispielsammlung",
+            "Python-Beispielsammlung",
+            "Python-Beispielsammlung",
+            "Python-Beispielsammlung",
+            "Python-Beispielsammlung",
+            "Python-Beispielsammlung",
+        ];
+        const descriptions = [
+            "Bestätigungsdialog",
+            "Bildverarbeitung",
+            "Blockchain",
+            "Blog",
+            "Chatbot",
+            "Eingabedialog",
+            "Finanzdatenanzeige",
+            "Funktionsdialog",
+            "Funktionswerkzeug",
+            "Lizenzpruefer",
+            "Notizenverwaltung",
+            "Verschluesselung",
+        ];
+
+        const body = document.body;
+        const img = document.querySelector(".overlay-box img");
+        const button = document.querySelector("#closeBtn");
+
+        function updateView() {
+            // Theme-Änderung
+            body.className = ""; // alle Klassen löschen
+            body.classList.add(`theme-${themes[themeIndex]}`);
+
+            // Bild-Änderung
+            img.src = `./assets/${images[imageIndex]}`;
+
+            // Button-Text aktualisieren
+            button.innerText = `Bild ${imageIndex + 1} von ${images.length}`;
+
+            // Beschreibungstext einfügen
+            const titl = document.getElementById("title");
+            titl.innerText = titles[imageIndex] || "Kein Titel verfügbar";
+            const desc = document.getElementById("description");
+            desc.innerText = descriptions[imageIndex] || "Keine Beschreibung verfügbar";
+        }
+
+        // Navigation
+        function nextTheme() {
+            themeIndex = (themeIndex + 1) % themes.length;
+            updateView();
+        }
+
+        function prevTheme() {
+            themeIndex = (themeIndex - 1 + themes.length) % themes.length;
+            updateView();
+        }
+
+        function nextImage() {
+            imageIndex = (imageIndex + 1) % images.length;
+            updateView();
+        }
+
+        function prevImage() {
+            imageIndex = (imageIndex - 1 + images.length) % images.length;
+            updateView();
+        }
+
+        // Event-Handler
+        document.getElementById("leftBtn").addEventListener("click", prevTheme);
+        document.getElementById("rightBtn").addEventListener("click", nextTheme);
+        document.getElementById("upBtn").addEventListener("click", prevImage);
+        document.getElementById("downBtn").addEventListener("click", nextImage);
+
+        // Tastatur-Navigation
+        document.addEventListener("keydown", (e) => {
+            switch (e.key) {
+                case "ArrowLeft":
+                case "ArrowRight":
+                case "ArrowUp":
+                case "ArrowDown":
+                    e.preventDefault(); // verhindert Scrollen
+                    break;
+            }
+
+            switch (e.key) {
+                case "ArrowLeft":  prevTheme(); break;
+                case "ArrowRight": nextTheme(); break;
+                case "ArrowUp":    prevImage(); break;
+                case "ArrowDown":  nextImage(); break;
+            }
+        });
+
+        // Touch-Wisch-Gesten
+        let startX = 0, startY = 0;
+
+        document.addEventListener("touchstart", (e) => {
+            startX = e.touches[0].clientX;
+            startY = e.touches[0].clientY;
+        });
+
+        document.addEventListener("touchend", (e) => {
+            const dx = e.changedTouches[0].clientX - startX;
+            const dy = e.changedTouches[0].clientY - startY;
+
+            if (Math.abs(dx) > Math.abs(dy)) {
+                dx > 0 ? prevTheme() : nextTheme();
+            } else {
+                dy > 0 ? nextImage() : prevImage();
+            }
+        });
+
+        updateView(); // Initialer Aufruf
+    </script>
+</body>
+</html>

@@ -1,0 +1,201 @@
+/*   Copyright (c) 2025 Franz Steinkress
+     Licensed under the MIT License - see LICENSE for details */
+
+/* Themes */
+.theme-white {
+    background-color: #F5F6F5;
+}
+
+.theme-gray {
+    background-color: #4A4A4A;
+}
+
+.theme-red {
+    background-color: #8B0000;
+}
+
+.theme-blue {
+    background-color: #0F4C81;
+}
+
+.theme-royal {
+    background-color: #4169E1;
+}
+
+.theme-green {
+    background-color: #2E4B3F;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+.container {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: #2D74B2;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    backdrop-filter: blur(4px);
+}
+.container img {
+    width: 32px;
+    height: 32px;
+}
+.container h1 {
+    margin: 0; /* Entfernt Standard-Margin des h1 */
+    font-size: 1.5rem; /* Anpassung der Schriftgröße, falls gewünscht */
+    color: white
+}
+
+.red-rectangle {
+    background-color: rgba(139, 0, 0, 0.5);
+    width: 50%; /* Variable Breite, z.B. 50% des Viewports */
+    height: 50%; /* Variable Höhe, z.B. 50% des Viewports */
+    position: absolute;
+    top: 25%; /* Variable Position, z.B. 25% von oben */
+    left: 25%; /* Variable Position, z.B. 25% von links */
+    z-index: 1; /* Hinter der overlay-box */
+}
+
+.overlay-box {
+    aspect-ratio: 9 / 16;           /* Moderne Browser unterstützen das */
+    /* width: 30vw; */
+    /*width: 360px;*/                   /* z. B. 360px Breite → 640px Höhe */
+    /*height: 640px;*/
+    width: 1080px;                   /* z. B. 360px Breite → 640px Höhe */
+    height: 1920px;
+    max-height: 90vh;              /* maximale Höhe begrenzt */
+    background-color: rgba(255, 255, 255, 0.5);
+    border: 2px solid #ccc;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column; /* Vertikale Anordnung */
+    justify-content: space-between; /* Text oben, Bild zentriert, Button unten */
+    align-items: center;
+    font-size: 1.2em;
+    font-family: sans-serif;
+    color: #000;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
+    text-align: center;
+    z-index: 2; /* Über dem roten Rechteck */
+    position: relative; /* wichtig für Pfeile innerhalb */
+    overflow: visible; /* wichtig, damit die Pfeile außerhalb sichtbar sind */
+    margin: 0 auto;
+    margin-top: 5vh;
+    padding-left: 80px;
+    padding-right: 80px;
+    box-sizing: border-box; /* wichtig! */
+}
+.overlay-box .text {
+    margin-top: 120px; /* Definierbarer Abstand des Textes von oben */
+    display: flex;
+    flex-direction: column; /* Stapelt die Zeilen vertikal */
+    align-items: center; /* Zentriert den Text horizontal */
+}
+.overlay-box .text .line1 {
+    font-size: 56px; /* Kopfzeile */
+    font-weight: bold;
+    margin: 0;
+}
+.overlay-box .text .line2 {
+    font-size: 40px; /* Beschreibung */
+    margin: 0;
+}
+/*
+.overlay-box .text .line1,
+.overlay-box .text .line2 {
+    line-height: 1.5;
+    margin: 0;
+}
+*/
+.overlay-box img {
+    width: 100%; /* Bild füllt die Breite der overlay-box */
+    height: auto;
+    max-height: 100%;
+    /* max-height: 48rem; Entspricht max-h-48 (1rem = 16px) */
+    object-fit: contain; /* Bild passt sich an, ohne zu verzerren */
+    border-radius: 0.25rem; /* Entspricht rounded */
+    margin-bottom: 1rem; /* Entspricht mb-4 */
+}
+.overlay-box button {
+    font-size: 44px; /* Button / Fußzeile */
+    padding: 16px 32px;
+    margin-bottom: 160px; /* Definierbarer Abstand des Buttons von unten */
+}
+
+button {
+    margin-top: 20px;
+    padding: 6px 12px;
+    border-radius: 4px;
+    border: none;
+    background: rgba(200, 50, 50, 0.8);
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.nav-arrows {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+}
+
+.arrow {
+    display: none !important;
+    pointer-events: auto;
+    position: absolute;
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    font-size: 1.5rem;
+    padding: 0.3rem;
+    padding: 0;
+    border-radius: 50%;    cursor: pointer;
+    width: 2.5rem;
+    height: 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 8px rgba(0,0,0,0.4);
+    transform: translate(-50%, -50%);
+    transition: transform 0.2s ease, background 0.3s ease;
+}
+
+.arrow.left  { left: -2.8rem;  top: 50%; transform: translateY(-50%) scale(1); }
+.arrow.right { right: -2.8rem; top: 50%; transform: translateY(-50%) scale(1); }
+.arrow.up    { top: -4.0rem;   left: 50%; transform: translateX(-50%); }
+.arrow.down  { bottom: -4.0rem; left: 50%; transform: translateX(-50%); }
+
+.arrow.left:hover  { transform: translateY(-50%) scale(1.2); }
+.arrow.right:hover { transform: translateY(-50%) scale(1.2); }
+.arrow.up:hover    { transform: translateX(-50%) scale(1.2); }
+.arrow.down:hover  { transform: translateX(-50%) scale(1.2); }
+
+/* nur zum Testen
+.arrow {
+    outline: 1px solid lime;
+}
+*/
+
+html, body {
+    width: 1080px;
+    height: 1920px;
+    overflow: hidden;
+}
+.overlay-box {
+    margin-top: 0 !important;
+    max-height: none !important;
+}
+.nav-arrows {
+    display: none !important;
+}
