@@ -64,7 +64,6 @@ const totalImages = 12;
       //await page.waitForTimeout(300); // Warten bis Bild geladen
       await new Promise(resolve => setTimeout(resolve, 300));
 
-
       const filename = `${themes[t]}_${i + 1}.png`;
       const filepath = path.join(outputDir, filename);
       await page.screenshot({ path: filepath });

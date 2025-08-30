@@ -66,11 +66,11 @@ html, body {
 
 .overlay-box {
     aspect-ratio: 9 / 16;           /* Moderne Browser unterstützen das */
-    /* width: 30vw; */
+    /*width: 30vw; */
     /*width: 360px;*/                   /* z. B. 360px Breite → 640px Höhe */
     /*height: 640px;*/
-    width: 1080px;                   /* z. B. 360px Breite → 640px Höhe */
-    height: 1920px;
+    width: 1080px;/**/                   /* z. B. 360px Breite → 640px Höhe */
+    height: 1920px;/**/
     max-height: 90vh;              /* maximale Höhe begrenzt */
     background-color: rgba(255, 255, 255, 0.5);
     border: 2px solid #ccc;
@@ -186,7 +186,6 @@ button {
     outline: 1px solid lime;
 }
 */
-
 html, body {
     width: 1080px;
     height: 1920px;
@@ -199,3 +198,4 @@ html, body {
 .nav-arrows {
     display: none !important;
 }
+

@@ -34,6 +34,6 @@ logs.txt
 outputs/
 .lastpath
 model/
-docs/*
+docs/
 Lizenz.md
 node_modules/*

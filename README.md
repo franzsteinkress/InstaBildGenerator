@@ -1,6 +1,6 @@
 # InstagramBildGenerator
 
-Hilfsmittel zur Gestaltung und automatisierten Erzeugung von Instagram-Highlight-Covern im 9:16-Format (z. B. 1080 × 1920 px) aus HTML+CSS.
+Hilfsmittel zur Gestaltung und automatisierten Erzeugung von Instagram-Story-Highlights im 9:16-Format (1080 × 1920 px) aus HTML + CSS.
 
 ## Voraussetzungen
 
@@ -40,17 +40,6 @@ Die `overlay-box` muss im CSS exakt im 9:16-Verhältnis angezeigt werden – ent
 ```
 
 > Verwende einen weißen Seitenhintergrund und zentriere das Layout, um einen sauberen Screenshot zu erzeugen.
-
----
-
-## Gestaltungstipps für Instagram
-
-* **Wichtige Inhalte zentriert** anordnen
-* **Klare, gut lesbare Schriften** verwenden
-* **Keine Texte am Rand** (Instagram kann Ränder abschneiden)
-* **Hoher Farbkontrast**: Hell auf Dunkel oder umgekehrt
-
----
 
 ## Automatisierte Screenshot-Erzeugung mit Puppeteer
 
