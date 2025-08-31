@@ -1,5 +1,7 @@
 # InstagramBildGenerator
 
+![Puppeteer](https://img.shields.io/badge/Puppeteer-21.x-40B5A4?logo=puppeteer&logoColor=white) ![HTML](https://img.shields.io/badge/HTML-5-E34F26?logo=html5&logoColor=white) ![CSS](https://img.shields.io/badge/CSS-3-1572B6?logo=css3&logoColor=white) ![JavaScript](https://img.shields.io/badge/JavaScript-ES6-F7DF1E?logo=javascript&logoColor=white) ![PNG](https://img.shields.io/badge/Image-PNG-FFFFFF?logo=png&logoColor=black) ![VS Code](https://img.shields.io/badge/Editor-VS%20Code-007ACC?logo=visualstudiocode&logoColor=white) ![License](https://img.shields.io/badge/License-MIT-green)
+
 Hilfsmittel zur Gestaltung und automatisierten Erzeugung von Instagram-Story-Highlights im 9:16-Format (1080 × 1920 px) aus HTML + CSS.
 
 ## Voraussetzungen
